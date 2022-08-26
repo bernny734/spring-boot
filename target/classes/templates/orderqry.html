@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>訂單查詢</title>
+    <script th:src="@{/js/vue.min.js}"></script>
+    <script th:src="@{/js/axios.min.js}"></script>
+    <script th:src="@{/js/jquery-3.6.0.min.js}"></script>
+  </head>
+  <body>
+    <fieldset id="panel">
+      <div>訂單開始日期</div>
+      <input type="text" v-model="begindate" />
+      <div>訂單結束日期</div>
+      <input type="text" v-model="enddate" />
+      <button v-on:click="queryHandler">查詢</button>
+      <div>查詢的訂單開始日期:{{begindate}} 結束日期:{{enddate}}</div>
+    </fieldset>
+    <!--建構Vue Instance-->
+    <script>
+      var app = new Vue(
+        //setting js object
+        {
+          //資料模組
+          data: {
+            orderid: "",
+            begindate: "",
+            enddate: "",
+          },
+          methods: {
+            queryHandler: function () {
+              console.log("開始日期:" + this.begindate);
+              console.log("結束日期:" + this.enddate);
+            },
+          },
+        }
+      );
+      //掛載特定DOM
+      app.$mount("#panel");
+    </script>
+    <!--測試jquery core-->
+    <script>
+      $(document).ready(function () {
+        alert("我來了 jquery");
+      });
+    </script>
+  </body>
+</html>
